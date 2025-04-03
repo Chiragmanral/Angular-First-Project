@@ -1,0 +1,18 @@
+<!-- Here, we use src and alt property provided by the DOM to get/set the attribute src and alt of img HTMl tag. -->
+      <!-- So, this binding is known as property binding, nor attribute binding -->
+      <!-- Attribute binding is different from this -->
+      <!-- agar square brackets ke andar directly src and alt likha hua hai so it means ki angular ko src and alt name ki properties dhundhni hai-->
+      <!-- But agar square brackets mein attr.src and attr.alt likha hua hai toh angular ko src and alt name ke attributes dhundhne hai naa ki properties. -->
+
+<div>
+    <button (click)="onSelectUser()">
+      <!-- This binding is known as property binding. -->
+      <!-- <img [src] = "imagePath" [alt] = "selectedUser.name"/>  -->
+      <!-- This binding is known as attribute binding -->
+      <!-- <img [attr.src] = "'../assets/users/' + selecteduser.avatar" [attr.alt] = "selecteduser.name"/> -->
+      
+      <img [src] = "imagePath()" [alt] = "name()"/>
+
+      <span>{{ name() }}</span>
+    </button>
+  </div>
