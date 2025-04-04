@@ -5,14 +5,14 @@
       <!-- But agar square brackets mein attr.src and attr.alt likha hua hai toh angular ko src and alt name ke attributes dhundhne hai naa ki properties. -->
 
 <div>
-    <button (click)="onSelectUser()">
+    <button [class.active]="isSelected" (click)="onSelectUser()">
       <!-- This binding is known as property binding. -->
       <!-- <img [src] = "imagePath" [alt] = "selectedUser.name"/>  -->
       <!-- This binding is known as attribute binding -->
       <!-- <img [attr.src] = "'../assets/users/' + selecteduser.avatar" [attr.alt] = "selecteduser.name"/> -->
       
-      <img [src] = "imagePath()" [alt] = "name()"/>
+      <img [src] = "imagePath" [alt] = "user.name"/>
 
-      <span>{{ name() }}</span>
+      <span>{{ user.name }}</span>
     </button>
   </div>
