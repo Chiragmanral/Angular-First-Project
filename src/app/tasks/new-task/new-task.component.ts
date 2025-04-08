@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Output, signal } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { type TaskData } from './new-task.model';
+import { TasksService } from '../tasks.service';
 
 @Component({
   selector: 'app-new-task',
@@ -10,6 +11,8 @@ import { type TaskData } from './new-task.model';
   styleUrl: './new-task.component.scss'
 })
 export class NewTaskComponent {
+  @Input({required : true}) userId! : string;
+  @Output() close = new EventEmitter<void>();
   enteredTitle = '';
   enteredSummary = '';
   enteredDate = '';
@@ -17,22 +20,24 @@ export class NewTaskComponent {
   // enteredTitle = signal("");
   // enteredSummary = signal("");
   // enteredDate = signal("");
-
-  @Output() cancel = new EventEmitter<void>();
-
-  @Output() addTask = new EventEmitter<TaskData>();
+  // Method-1 
+  private tasksService = inject(TasksService);
+  // method-2
+  // constructor(private tasksService : TasksService) {}
 
   onCancel() {
-    this.cancel.emit(); //bus iss new task add krne wale dialog box ko band kardo
+    this.close.emit(); //bus iss new task add krne wale dialog box ko band kardo
   }
 
   onCreate() {
-    this.addTask.emit(
+    this.tasksService.addTask(
       {
         title : this.enteredTitle,
         summary : this.enteredSummary,
         date : this.enteredDate
-      }
-    )
+      },
+      this.userId
+    );
+    this.close.emit();
   }
 }
