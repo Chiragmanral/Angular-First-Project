@@ -4,17 +4,17 @@
   <form (submit)="onConfirm()">
     <p>
       <label for="title">Title</label>
-      <input type="text" id="title" name="title"  [(ngModel)]="t1"/> <!-- This ngModel supports two-way binding which means take input from the input and also then write back to the input at the same time-->
+      <input type="text" id="title" name="title"  [(ngModel)]="givenTitle"/> <!-- This ngModel supports two-way binding which means take input from the input and also then write back to the input at the same time-->
     </p>
 
     <p>
       <label for="summary">Summary</label>
-      <textarea id="summary" rows="5" name="summary" [(ngModel)]="t2"></textarea> <!-- This ngModel supports two-way binding which means take input from the textarea and also then write back to the textarea at the same time-->
+      <textarea id="summary" rows="5" name="summary" [(ngModel)]="givenSummary"></textarea> <!-- This ngModel supports two-way binding which means take input from the textarea and also then write back to the textarea at the same time-->
     </p>
 
     <p>
       <label for="due-date">Due Date</label>
-      <input type="date" id="due-date" name="due-date" [(ngModel)]="t3"/> <!-- This ngModel supports two-way binding which means take input from the input and also then write back to the input at the same time-->
+      <input type="date" id="due-date" name="due-date" [(ngModel)]="givenDate"/> <!-- This ngModel supports two-way binding which means take input from the input and also then write back to the input at the same time-->
     </p>
 
     <p class="actions">

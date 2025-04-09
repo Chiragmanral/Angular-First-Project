@@ -20,11 +20,12 @@ export class EditTaskComponent {
 
   private tasksService = inject(TasksService);
   private editTasksService = inject(EditTaskService);
-  t1 = this.editTasksService.enteredTitle;
-  t2 = this.editTasksService.enteredSummary;
-  t3 = this.editTasksService.enteredDate;
+  givenTitle = this.editTasksService.enteredTitle;
+  givenSummary = this.editTasksService.enteredSummary;
+  givenDate = this.editTasksService.enteredDate;
 
   onConfirm() {
+    this.editTasksService.updateTask(this.givenTitle, this.givenSummary, this.givenDate);
     this.tasksService.editTask({
       title : this.editTasksService.enteredTitle,
       summary : this.editTasksService.enteredSummary,
