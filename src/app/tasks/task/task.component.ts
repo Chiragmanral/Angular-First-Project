@@ -6,11 +6,12 @@ import {type Task} from './task.model';
 import { TasksService } from '../tasks.service';
 import { EditTaskComponent } from "./edit-task/edit-task.component";
 import { EditTaskService } from './edit-task/edit-task.service';
+import { DeleteTaskComponent } from './delete-task/delete-task.component';
 
 @Component({
   selector: 'app-task',
   standalone: true,
-  imports: [CardComponent, DatePipe, EditTaskComponent],
+  imports: [CardComponent, DatePipe, EditTaskComponent, DeleteTaskComponent],
   templateUrl: './task.component.html',
   styleUrl: './task.component.scss'
 })
@@ -21,17 +22,18 @@ export class TaskComponent {
   // @Output() complete = new EventEmitter<string>();
   // complete = output<string>();
   isEditingTask = false;
+  isConfirmDelete = false;
 
   onCompleteTask() {
     this.tasksService.removeTask(this.task.id);
   }
 
   onDeleteTask() {
-    let answer = confirm("Do you wanna delete it??");
-    // console.log(answer);
-    if(answer === true) {
-      this.tasksService.removeTask(this.task.id);
-    }
+    this.isConfirmDelete = true;
+    // let answer = false;
+    // if(answer === true) {
+    //   this.tasksService.removeTask(this.task.id);
+    // }
   }
 
   onEditTask() {
@@ -43,5 +45,9 @@ export class TaskComponent {
 
   onCloseEditTask() {
     this.isEditingTask = false;
+  }
+
+  onCloseDeleteTask() {
+    this.isConfirmDelete = false;
   }
 }

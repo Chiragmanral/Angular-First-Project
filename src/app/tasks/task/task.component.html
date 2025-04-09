@@ -1,6 +1,9 @@
 @if(isEditingTask) {
     <app-edit-task [userId]="task.userId" [taskId]="task.id" (close)="onCloseEditTask()"/>
 }
+@if(isConfirmDelete) {
+    <app-delete-task (close)="onCloseDeleteTask()" [taskId]="task.id"/>
+}
 <app-card>
     <article>
         <h2>{{ task.title }}</h2>

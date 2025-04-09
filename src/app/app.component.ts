@@ -17,6 +17,7 @@ export class AppComponent {
   addUser = false;
   users = DUMMY_USERS;
   selectedUserId ?: string;
+  isConfirmDelete = false;
   private images = ['user-1.jpg', 'user-2.jpg', 'user-3.jpg', 'user-4.jpg', 'user-5.jpg', 'user-6.jpg'];
   private randomUserImage() {
     let index = Math.floor((Math.random() * this.images.length));
@@ -64,6 +65,7 @@ export class AppComponent {
   }
 
   onRemoveUser(userId : string) {
+    this.isConfirmDelete = true;
     this.users = this.users.filter((user) => user.id !== userId);
   }
 

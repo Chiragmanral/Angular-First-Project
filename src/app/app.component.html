@@ -4,6 +4,10 @@
     <app-add-user (close)="onClose()" (addUser)="onSubmit($event)" />
 }
 
+@if(isConfirmDelete) {
+    
+}
+
 <main>
     <ul>
         @for(user of users; track user.id) {
