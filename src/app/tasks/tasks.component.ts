@@ -15,6 +15,7 @@ export class TasksComponent {
   @Input({required : true}) userId! : string;
   @Input({required : true}) name! : string;
   isAddingTask = false;
+  isEditingTask = false;
   // private tasksService : TasksService;
 
   constructor(private tasksService : TasksService) {

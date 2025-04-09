@@ -1,9 +1,14 @@
+@if(isEditingTask) {
+    <app-edit-task [userId]="task.userId" [taskId]="task.id" (close)="onCloseEditTask()"/>
+}
 <app-card>
     <article>
         <h2>{{ task.title }}</h2>
         <time>{{ task.dueDate | date : "fullDate" }}</time>
         <summary>{{ task.summary }}</summary>
         <p class="actions">
+            <button (click)="onEditTask()">Edit</button>
+            <button (click)="onDeleteTask()">Delete</button>
             <button (click)="onCompleteTask()">Complete</button>
         </p>
     </article>

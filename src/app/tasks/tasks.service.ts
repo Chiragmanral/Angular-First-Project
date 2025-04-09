@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { type TaskData } from "./new-task/new-task.model";
+import { type Task } from "./task/task.model";
 
 @Injectable({providedIn : "root"})
 export class TasksService {
@@ -47,7 +48,7 @@ export class TasksService {
             userId : userId,
             title : taskData.title,
             summary : taskData.summary,
-            dueDate : taskData.date
+            dueDate : taskData.dueDate
           });
         this.saveTasks();
     }
@@ -55,6 +56,14 @@ export class TasksService {
     removeTask(taskId : string) {
         this.tasks = this.tasks.filter((task) => task.id !== taskId);
         this.saveTasks();
+    }
+
+    editTask(taskData : Task) {
+      let updateTask = this.tasks.find((task) => task.id === taskData.id);
+      updateTask!.title = taskData.title;
+      updateTask!.summary = taskData.summary;
+      updateTask!.dueDate = taskData.dueDate;
+      this.saveTasks();
     }
 
     private saveTasks() {

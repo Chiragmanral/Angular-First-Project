@@ -44,6 +44,7 @@ export class UserComponent {
   @Input({required : true}) isSelected! : boolean;
   @Input({required : true}) user !: User;
   @Output() select = new EventEmitter<string>(); // Output Decorator
+  @Output() remove = new EventEmitter<string>(); // Output Decorator
   // select = output<string>(); //output function
 
   // imagePath = computed(() => {
@@ -56,6 +57,10 @@ export class UserComponent {
 
   onSelectUser() {
     this.select.emit(this.user.id);
+  }
+
+  removeUser() {
+    this.remove.emit(this.user.id);
   }
 
 }

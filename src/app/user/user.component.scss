@@ -13,6 +13,16 @@ button {
   text-align: left;
 }
 
+#remove-button {
+  background-color: #150722;
+  text-align: center;
+}
+
+#remove-button:hover,
+#remove-button:active {
+  background-color: #9965dd;
+}
+
 button:hover,
 button:active,
 .active {

@@ -2,6 +2,7 @@ import { Component, EventEmitter, inject, Input, Output, signal } from '@angular
 import { FormsModule } from '@angular/forms';
 import { type TaskData } from './new-task.model';
 import { TasksService } from '../tasks.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-new-task',
@@ -30,14 +31,21 @@ export class NewTaskComponent {
   }
 
   onCreate() {
-    this.tasksService.addTask(
-      {
-        title : this.enteredTitle,
-        summary : this.enteredSummary,
-        date : this.enteredDate
-      },
-      this.userId
-    );
-    this.close.emit();
+    if(this.enteredDate && this.enteredTitle) {
+      this.tasksService.addTask(
+        {
+          title : this.enteredTitle,
+          summary : this.enteredSummary,
+          dueDate : this.enteredDate
+        },
+        this.userId
+      );
+      this.close.emit();
+      }
+
+      else {
+        alert("Please enter the valid Due Date and Title");
+        return;
+      }
   }
 }

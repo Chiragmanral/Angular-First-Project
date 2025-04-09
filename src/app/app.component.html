@@ -1,12 +1,17 @@
 <app-header />
 
+@if (addUser) {
+    <app-add-user (close)="onClose()" (addUser)="onSubmit($event)" />
+}
+
 <main>
     <ul>
         @for(user of users; track user.id) {
             <li id="users">
-                <app-user [isSelected]="user.id === selectedUserId" [user]="user" (select)="onSelectUser($event)"/>
+                <app-user [isSelected]="user.id === selectedUserId" [user]="user" (select)="onSelectUser($event)" (remove)="onRemoveUser($event)"/>
             </li>
         }
+        <button type="button" (click)="onAddUser()">Add User</button>
         
         <!-- <li *ngFor="let user of users" id="users">
             <app-user [user]="user" (select)="onSelectUser($event)"/>
