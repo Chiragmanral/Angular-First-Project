@@ -16,6 +16,8 @@ button {
 #remove-button {
   background-color: #150722;
   text-align: center;
+  justify-content: flex-end;
+  font-size: 12px;
 }
 
 #remove-button:hover,

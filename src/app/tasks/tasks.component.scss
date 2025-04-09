@@ -51,6 +51,10 @@
     max-height: 50vh;
     overflow: auto;
   }
+
+  #each-task {
+    margin-bottom: 15px;
+  }
   
   @media (min-width: 768px) {
     h2 {

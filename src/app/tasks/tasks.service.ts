@@ -60,10 +60,22 @@ export class TasksService {
 
     editTask(taskData : Task) {
       let updateTask = this.tasks.find((task) => task.id === taskData.id);
-      updateTask!.title = taskData.title;
-      updateTask!.summary = taskData.summary;
-      updateTask!.dueDate = taskData.dueDate;
-      this.saveTasks();
+      if(taskData.title && taskData.dueDate) {
+        updateTask!.title = taskData.title;
+        updateTask!.summary = taskData.summary;
+        updateTask!.dueDate = taskData.dueDate;
+        this.saveTasks();
+      }
+      else if(taskData.title && !taskData.dueDate) {
+        alert("Please enter a valid date");
+      }
+      else if(taskData.dueDate && !taskData.title) {
+        alert('Please enter a valid title');
+      }
+      else {
+        alert("Please enter the valid date and title");
+        return;
+      }
     }
 
     private saveTasks() {

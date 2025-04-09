@@ -1,4 +1,9 @@
-<div class="backdrop" (click)="onCancel()"></div>
+@if (!isTaskDataValid) {
+  <app-invalid-data-modal-box (close)="onClose()" [missingData]="modalMessage" />
+}
+
+@else {
+  <div class="backdrop" (click)="onCancel()"></div>
 <dialog open>
   <h2>Add Task</h2>
   <form (ngSubmit)="onCreate()">
@@ -23,3 +28,5 @@
     </p>
   </form>
 </dialog>
+}
+
