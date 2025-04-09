@@ -5,6 +5,7 @@ import { DatePipe } from '@angular/common';
 import {type Task} from './task.model';
 import { TasksService } from '../tasks.service';
 import { EditTaskComponent } from "./edit-task/edit-task.component";
+import { EditTaskService } from './edit-task/edit-task.service';
 
 @Component({
   selector: 'app-task',
@@ -16,6 +17,7 @@ import { EditTaskComponent } from "./edit-task/edit-task.component";
 export class TaskComponent {
   @Input({required : true}) task! : Task;
   private tasksService = inject(TasksService);
+  private editTaskService = inject(EditTaskService);
   // @Output() complete = new EventEmitter<string>();
   // complete = output<string>();
   isEditingTask = false;
@@ -34,7 +36,9 @@ export class TaskComponent {
 
   onEditTask() {
     this.isEditingTask = true;
-    
+    this.editTaskService.enteredTitle = this.task.title;
+    this.editTaskService.enteredSummary = this.task.summary;
+    this.editTaskService.enteredDate = this.task.dueDate;
   }
 
   onCloseEditTask() {
