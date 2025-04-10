@@ -1,15 +1,16 @@
 <div class="backdrop" (click)="onCancel()"></div>
 <dialog open>
   <h2>Add User</h2>
-  <form (ngSubmit)="onSubmit()">
+  <form (ngSubmit)="onSubmit()" ngNativeValidate>
+  <!-- <form (ngSubmit)="onSubmit()"> -->
     <p>
       <label for="name">First Name</label>
-      <input type="text" id="first-name" name="first-name" [(ngModel)]="firstName" /> <!-- This ngModel supports two-way binding which means take input from the input and also then write back to the input at the same time-->
+      <input type="text" id="first-name" name="first-name"  [(ngModel)]="firstName" required/> <!-- This ngModel supports two-way binding which means take input from the input and also then write back to the input at the same time-->
     </p>
 
     <p>
       <label for="name">Last Name</label>
-      <input type="text" id="last-name" name="last-name" [(ngModel)]="lastName" /> <!-- This ngModel supports two-way binding which means take input from the input and also then write back to the input at the same time-->
+      <input type="text" id="last-name" name="last-name" [(ngModel)]="lastName"/> <!-- This ngModel supports two-way binding which means take input from the input and also then write back to the input at the same time-->
     </p>
 
     <p class="actions">

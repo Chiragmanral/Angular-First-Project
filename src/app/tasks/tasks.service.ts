@@ -4,7 +4,7 @@ import { type Task } from "./task/task.model";
 
 @Injectable({providedIn : "root"})
 export class TasksService {
-    private tasks = [
+    private tasks : Task[] = [
         {
           id: 't1',
           userId: 'u1',
@@ -27,19 +27,30 @@ export class TasksService {
           summary:
             'Prepare and describe an issue template which will help with project management',
           dueDate: '2024-06-15',
-        },
+        }
     ];
+
+    public completedTasks : Task[] = [
+    ]
 
     constructor() {
       const tasks = localStorage.getItem('tasks');
+      const completedTasks = localStorage.getItem('completedTasks');
   
       if (tasks) {
         this.tasks = JSON.parse(tasks);
+      }
+      if (completedTasks) {
+        this.completedTasks = JSON.parse(completedTasks);
       }
     }
 
     getUserTasks(userId : string) {
         return this.tasks.filter((task) => task.userId === userId);
+    }
+
+    getUserCompletedTasks(userId : string) {
+      return this.completedTasks.filter((completedTask) => completedTask.userId === userId);
     }
 
     addTask(taskData : TaskData, userId : string) {
@@ -57,6 +68,29 @@ export class TasksService {
         this.tasks = this.tasks.filter((task) => task.id !== taskId);
         this.saveTasks();
     }
+
+    completeTask(taskId : string) {
+      let completedTask = this.tasks.find((task) => task.id === taskId);
+      if(completedTask) {
+        this.completedTasks.push(completedTask);
+      }
+      this.tasks = this.tasks.filter((task) => task.id !== taskId);
+      this.saveTasks();
+    }
+
+    IncompleteTask(taskId : string) {
+      let IncompletedTask = this.completedTasks.find((task) => task.id === taskId);
+      if(IncompletedTask) {
+        this.tasks.push(IncompletedTask);
+      }
+      this.completedTasks = this.completedTasks.filter((task) => task.id !== taskId);
+      this.saveTasks();
+    }
+
+    // removeCompletedTask(taskId : string) {
+    //   this.completedTasks = this.completedTasks.filter((completedTask) => completedTask.id !== taskId);
+    //   this.saveTasks();
+    // }
 
     editTask(taskData : Task) {
       let updateTask = this.tasks.find((task) => task.id === taskData.id);
@@ -80,5 +114,6 @@ export class TasksService {
 
     private saveTasks() {
       localStorage.setItem('tasks', JSON.stringify(this.tasks));
+      localStorage.setItem('completedTasks', JSON.stringify(this.completedTasks));
     }
 }

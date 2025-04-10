@@ -4,10 +4,6 @@
     <app-add-user (close)="onClose()" (addUser)="onSubmit($event)" />
 }
 
-@if(isConfirmDelete) {
-    
-}
-
 <main>
     <ul>
         @for(user of users; track user.id) {
@@ -22,13 +18,15 @@
         </li> -->
         
     </ul>
-
-    @if (selectedUser) {
-        <app-tasks [userId]="selectedUser.id" [name]="selectedUser.name"/>
-    }
-    @else {
-        <p id="fallback">Select a user to see their tasks!!!</p> 
-    }
+    <div class="tasks">
+        @if (selectedUser) {
+            <app-tasks [userId]="selectedUser.id" [name]="selectedUser.name"/>
+            <app-completed-tasks [userId]="selectedUser.id"></app-completed-tasks>
+        }
+        @else {
+            <p id="fallback">Select a user to see their tasks!!!</p> 
+        }
+    </div>
 
     <!-- <app-tasks *ngIf="selectedUser; else fallback" [name]="selectedUser.name"/>
 

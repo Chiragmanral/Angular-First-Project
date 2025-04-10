@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output, computed, input, output, signal } from '@angular/core';
-
 import { type User } from './user.model';
 import { CardComponent } from "../shared/card/card.component";
+import { DeleteUserComponent } from './delete-user/delete-user.component';
 
 // import { DUMMY_USERS } from '../dummy_users';
 
@@ -16,7 +16,7 @@ import { CardComponent } from "../shared/card/card.component";
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [CardComponent],
+  imports: [CardComponent, DeleteUserComponent],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss'
 })
@@ -46,6 +46,7 @@ export class UserComponent {
   @Output() select = new EventEmitter<string>(); // Output Decorator
   @Output() remove = new EventEmitter<string>(); // Output Decorator
   // select = output<string>(); //output function
+  isConfirmDelete = false;
 
   // imagePath = computed(() => {
   //   return `../assets/users/${this.avatar()}`;
@@ -60,7 +61,11 @@ export class UserComponent {
   }
 
   removeUser() {
-    this.remove.emit(this.user.id);
+    this.isConfirmDelete = true;
+  }
+
+  onCloseDeleteUser() {
+    this.isConfirmDelete = false;
   }
 
 }

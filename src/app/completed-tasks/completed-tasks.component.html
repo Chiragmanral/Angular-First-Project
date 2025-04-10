@@ -1,0 +1,17 @@
+<section id="tasks">
+    <header>
+        <h2>Completed Tasks</h2>
+        <menu>
+            <!-- <button (click)="onAddTask()">Add Task</button> -->
+        </menu>
+    </header>
+    
+    <ul>
+        @for (completedTask of selectedUserCompletedTasks; track completedTask.id) {
+            <li id="each-task">
+                <!-- <app-task [task]="task"/> -->
+                 <app-completed-task [completedTask]="completedTask" />
+            </li>
+        }
+    </ul>
+</section>

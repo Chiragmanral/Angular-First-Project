@@ -4,6 +4,10 @@
       <!-- agar square brackets ke andar directly src and alt likha hua hai so it means ki angular ko src and alt name ki properties dhundhni hai-->
       <!-- But agar square brackets mein attr.src and attr.alt likha hua hai toh angular ko src and alt name ke attributes dhundhne hai naa ki properties. -->
 
+@if(isConfirmDelete) {
+    <app-delete-user (close)="onCloseDeleteUser()" [userId]="user.id" />
+}
+
 <app-card>
   <button [class.active]="isSelected" (click)="onSelectUser()">
       <!-- This binding is known as property binding. -->

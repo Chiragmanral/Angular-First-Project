@@ -1,0 +1,14 @@
+<app-card>
+    <article>
+        <h2>{{ completedTask.title }}</h2>
+        <time>{{ completedTask.dueDate | date : "fullDate" }}</time>
+        <summary>{{ completedTask.summary }}</summary>
+        <form ngNativeValidate>
+            <p class="actions">
+                <button disabled >Edit</button>
+                <button (click)="onDeleteCompletedTask()">Delete</button>
+                <button (click)="onIncompleteTask()">Incomplete</button>
+            </p>
+        </form>
+    </article>
+</app-card>

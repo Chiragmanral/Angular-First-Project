@@ -25,15 +25,11 @@ export class TaskComponent {
   isConfirmDelete = false;
 
   onCompleteTask() {
-    this.tasksService.removeTask(this.task.id);
+    this.tasksService.completeTask(this.task.id);
   }
 
   onDeleteTask() {
     this.isConfirmDelete = true;
-    // let answer = false;
-    // if(answer === true) {
-    //   this.tasksService.removeTask(this.task.id);
-    // }
   }
 
   onEditTask() {
