@@ -3,7 +3,7 @@ import { CardComponent } from '../../shared/card/card.component';
 import { DatePipe } from '@angular/common';
 
 import {type Task} from './task.model';
-import { TasksService } from '../tasks.service';
+import { TasksService } from '../../tasks.service';
 import { EditTaskComponent } from "./edit-task/edit-task.component";
 import { EditTaskService } from './edit-task/edit-task.service';
 import { DeleteTaskComponent } from './delete-task/delete-task.component';

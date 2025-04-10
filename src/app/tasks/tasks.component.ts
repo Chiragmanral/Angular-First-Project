@@ -2,7 +2,7 @@ import { Component , EventEmitter, Input, Output } from '@angular/core';
 import { TaskComponent } from './task/task.component';
 import { NewTaskComponent } from './new-task/new-task.component';
 import { type TaskData } from './new-task/new-task.model';
-import { TasksService } from './tasks.service';
+import { TasksService } from '../tasks.service';
 
 @Component({
   selector: 'app-tasks',

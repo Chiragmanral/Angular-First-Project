@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { type TaskData } from "./new-task/new-task.model";
-import { type Task } from "./task/task.model";
+import { type TaskData } from "./tasks/new-task/new-task.model";
+import { type Task } from "./tasks/task/task.model";
 
 @Injectable({providedIn : "root"})
 export class TasksService {
@@ -62,7 +62,7 @@ export class TasksService {
         }
     ];
 
-    public completedTasks : Task[] = [
+    private completedTasks : Task[] = [
     ]
 
     constructor() {

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, inject, Input, Output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { type TaskData } from './new-task.model';
-import { TasksService } from '../tasks.service';
+import { TasksService } from '../../tasks.service';
 import { Title } from '@angular/platform-browser';
 import { InvalidDataModalBoxComponent } from './invalid-data-modal-box/invalid-data-modal-box.component';
 

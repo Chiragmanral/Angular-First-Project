@@ -2,7 +2,7 @@ import { Component, inject, Input } from '@angular/core';
 import { CardComponent } from '../../shared/card/card.component';
 import {type Task} from '../../tasks/task/task.model';
 import { DatePipe } from '@angular/common';
-import { TasksService } from '../../tasks/tasks.service';
+import { TasksService } from '../../tasks.service';
 
 @Component({
   selector: 'app-completed-task',
