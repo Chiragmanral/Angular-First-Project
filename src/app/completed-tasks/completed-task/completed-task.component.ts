@@ -19,6 +19,8 @@ export class CompletedTaskComponent {
 
   onDeleteCompletedTask() {
     this.isDeleteCompletedTask = true;
+    // e.preventDefault();
+    // console.log(3);
   }
 
   onIncompleteTask() {
@@ -28,6 +30,5 @@ export class CompletedTaskComponent {
   onCloseDeleteCompletedtask() {
     this.isDeleteCompletedTask = false;
   }
-
 
 }

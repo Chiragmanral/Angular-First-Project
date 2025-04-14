@@ -1,5 +1,5 @@
 @if(isDeleteCompletedTask) {
-    <app-delete-completed-task (close)="onCloseDeleteCompletedtask()" />
+    <app-delete-completed-task (close)="onCloseDeleteCompletedtask()" [taskId]="completedTask.id"/>
 }
 
 <app-card>
@@ -7,11 +7,11 @@
         <h2>{{ completedTask.title }}</h2>
         <time>{{ completedTask.dueDate | date : "fullDate" }}</time>
         <summary>{{ completedTask.summary }}</summary>
-        <form ngNativeValidate>
+        <form ngNativeValidate >
             <p class="actions">
                 <button [disabled]="true">Edit</button>
-                <button (click)="onDeleteCompletedTask()">Delete</button>
-                <button (click)="onIncompleteTask()">Incomplete</button>
+                <button type="button" (click)="onDeleteCompletedTask()">Delete</button>
+                <button type="button"(click)="onIncompleteTask()">Incomplete</button>
             </p>
         </form>
     </article>

@@ -101,6 +101,11 @@ export class TasksService {
         this.saveTasks();
     }
 
+    removeCompletedtask(taskId : string) {
+      this.completedTasks = this.completedTasks.filter((task) => task.id !== taskId);
+      this.saveTasks();
+    }
+
     completeTask(taskId : string) {
       let completedTask = this.tasks.find((task) => task.id === taskId);
       if(completedTask) {
