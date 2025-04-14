@@ -34,8 +34,13 @@ article {
     transition: all 0.3s ease;
   }
   
-  .actions button:hover,
-  .actions button:active {
+  .actions button:hover:enabled,
+  .actions button:active:enabled {
     background-color: #4a0774;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .actions button:disabled {
+    background-color: #380774;
+    opacity: 0.4;
   }

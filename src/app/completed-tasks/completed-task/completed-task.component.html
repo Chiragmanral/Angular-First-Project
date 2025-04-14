@@ -1,3 +1,7 @@
+@if(isDeleteCompletedTask) {
+    <app-delete-completed-task (close)="onCloseDeleteCompletedtask()" />
+}
+
 <app-card>
     <article>
         <h2>{{ completedTask.title }}</h2>
@@ -5,7 +9,7 @@
         <summary>{{ completedTask.summary }}</summary>
         <form ngNativeValidate>
             <p class="actions">
-                <button disabled >Edit</button>
+                <button [disabled]="true">Edit</button>
                 <button (click)="onDeleteCompletedTask()">Delete</button>
                 <button (click)="onIncompleteTask()">Incomplete</button>
             </p>
