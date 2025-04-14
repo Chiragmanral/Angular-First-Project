@@ -65,6 +65,11 @@ export class TasksService {
     private completedTasks : Task[] = [
     ]
 
+    sizeOfSelectedUserCompletedTasks(userId : string) {
+      let temp = this.completedTasks.filter((completedTask) => completedTask.userId === userId);
+      return temp.length;
+    }
+
     constructor() {
       const tasks = localStorage.getItem('tasks');
       const completedTasks = localStorage.getItem('completedTasks');
